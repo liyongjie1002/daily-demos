@@ -57,4 +57,20 @@ class KeyboardViewController: UIInputViewController {
         let proxy = textDocumentProxy as UITextDocumentProxy
         proxy.insertText(sender.currentTitle!)
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.updateKeyboardHeight(to: 500)
+        
+    }
+    
+    func updateKeyboardHeight(to height: CGFloat) {
+        for constraint in self.view.constraints {
+            if constraint.firstAttribute == .height {
+                constraint.constant = height
+                break
+            }
+        }
+    }
 }
